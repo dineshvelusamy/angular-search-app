@@ -1,0 +1,6 @@
+.prodTable{
+        border: 2px solid black;
+        border-collapse: collapse;
+        padding: auto;
+        text-align: center;
+}

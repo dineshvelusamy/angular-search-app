@@ -1,0 +1,8 @@
+<fieldset style="width:300px">
+    <h5>Type n below textbox to search</h5>
+    <input type="text" id="searchTxt" name="searchTxt" placeholder="Search....." [(ngModel)]="searchTxt" (keyup)="onSearchTextChanged()"/>
+    <br>
+    <br>
+    <input type="checkbox" id="onlyStock" name = "onlyStock" [(ngModel)]="onlyStock" (change)="onStockOnlyChange()"/> 
+    <label>Only show products in stock</label>
+</fieldset>
