@@ -11,7 +11,6 @@ export class ProductRowComponent implements OnInit {
   rowData:any;
 
   constructor() { 
-    // console.log("Inside product row component constructor");
     this.rowData = {};
     this.rowData.name="default name";
   }

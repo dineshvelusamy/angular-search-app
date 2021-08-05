@@ -18,17 +18,15 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnChanges, 
   @Input()
   searchCriteria: any;
 
-  @ViewChild('prodcontainer', {static:false, read: ViewContainerRef }) viewContainerRef!:ViewContainerRef;
+  @ViewChild('prodcontainer', { static: false, read: ViewContainerRef }) viewContainerRef!: ViewContainerRef;
 
   constructor(@Inject("prodSvc") prodSvc: any,
-    // private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver) {
     this.productSvc = prodSvc;
     this.productJsonObj = {};
     this.searchCriteria = {};
     this.productJsonObj = (productData as any).default;
     this.componentList = new Array<any>();
-    // this.onProdFilter();
   }
   ngAfterViewInit(): void {
     this.searchCriteria = {};
@@ -45,33 +43,23 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnChanges, 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("Inside ng on changes of product table component");
     if (changes['searchCriteria'] && changes['searchCriteria'].previousValue != changes['searchCriteria'].currentValue) {
-      console.log("criteria changes");
-
       this.productJsonObj = (productData as any).default;
       this.onProdFilter();
     }
   }
 
   ngOnInit(): void {
-    // console.log(this.productJsonObj);
   }
 
   onProdFilter() {
-    console.log("Prod filtering to create dynamic components");
-    console.log(this.searchCriteria.onlyStock);
     this.productJsonObj = this.productSvc.filterProduct(
       this.searchCriteria.searchText, this.searchCriteria.onlyStock);
-    // var categories = this.productJsonObj.filter((obj: { category: any; })=>{
-    //   return obj.category;
-    // });
 
     var categories = new Set<string>();
     for (let item of this.productJsonObj) {
       categories.add(item.category);
     }
-    // console.log(`Categories filtered ${categories.size}`);
 
     const componentFactory = this.componentFactoryResolver.
       resolveComponentFactory(ProductCategoryComponent);
@@ -80,17 +68,13 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnChanges, 
     for (let catItem of categories) {
       let componentRef = containerRef.createComponent(componentFactory);
       this.componentList.push(componentRef);
-      // console.log(`Iterated category is ${catItem}`);
       componentRef.instance.categoryName = catItem;
       var rowDetails = this.productJsonObj.filter((obj: { [x: string]: string; }) => {
-        // console.log(`Inside iteration ${obj.category}`)
         return obj['category'] == catItem;
       }
       );
-      // console.log(rowDetails);
       componentRef.instance.rowData = rowDetails;
     }
-
 
   }
 

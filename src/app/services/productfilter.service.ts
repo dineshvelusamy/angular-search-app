@@ -9,45 +9,23 @@ export class ProductFilter {
     setSearchText(srchTxt: string, onlyStocked: boolean) {
         this.searchText = srchTxt;
         this.onlyStocked = onlyStocked;
-        this.productJson = (productData as any).default;
-        // console.log("Inside prod filter service");
-        // console.log(this.searchText);
-        // console.log(this.productJson);
-        return this.filterProduct(this.searchText, this.onlyStocked);
     }
 
     filterProduct(srchTx: string, onlyStocked: boolean) {
-        // console.log(`Inside filter service ${onlyStocked}`);
         var result = [];
         this.productJson = (productData as any).default;
-        if (srchTx) {
-            if (srchTx.trim()) {
-                // console.log(`Filtering product function with inputs ${srchTx} ${onlyStocked}`);
-
-                for (let i = 0; i < this.productJson.length; i++) {
-                    // if (this.productJson[i].name.search(new RegExp(this.searchText, "i")) != -1)
-                    if (this.productJson[i].name.includes(srchTx))
-                        // if (this.productJson[i].name.indexOf(this.searchText) != -1)
-                        if ((onlyStocked && this.productJson[i].stocked == true) || !onlyStocked)
-                            result.push(this.productJson[i]);
-                }
+        if (srchTx && srchTx.trim()) {
+            for (let i = 0; i < this.productJson.length; i++) {
+                if (this.productJson[i].name.includes(srchTx))
+                    if ((onlyStocked && this.productJson[i].stocked == true) || !onlyStocked)
+                        result.push(this.productJson[i]);
             }
         } else {
-            // result = this.productJson;
             for (let i = 0; i < this.productJson.length; i++) {
                 if ((onlyStocked && this.productJson[i].stocked == true) || !onlyStocked)
                     result.push(this.productJson[i]);
             }
         }
-        // console.log("Filtered result");
-        // console.log(result);
-        // var result1 = result.reduce(function (res, obj) {
-        //     res[obj.category] = res[obj.category] || [];
-        //     res[obj.category].push(obj);
-        //     return res;
-        // });
-        // console.log("Restructured results");
-        // console.log(result1);
         return result;
     }
 

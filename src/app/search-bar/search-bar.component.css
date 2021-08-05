@@ -1,0 +1,10 @@
+fieldset {
+    width:300px; 
+    border-color: blue; 
+    margin: 5px;
+}
+
+.srchBarTitle {
+    font-weight: bold; 
+    padding-bottom: 10px;
+}

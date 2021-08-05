@@ -17,7 +17,6 @@ export class ProductCategoryComponent implements OnInit {
   constructor(
     private viewContainerRef: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver) {
-    // console.log("Creating product category constructor");
     this.categoryName = "";
     this.rowData = {};
   }

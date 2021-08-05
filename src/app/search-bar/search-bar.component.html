@@ -1,5 +1,5 @@
-<fieldset style="width:300px; border-color: blue; margin: 5px;">
-    <div style="font-weight: bold; padding-bottom: 10px;">Type below textbox to search</div>
+<fieldset>
+    <div class = "srchBarTitle">Type below textbox to search</div>
     <input type="text" id="searchTxt" name="searchTxt" placeholder="Search....." [(ngModel)]="searchTxt" (keyup)="onSearchTextChanged()"/>
     <br>
     <input type="checkbox" id="onlyStock" name = "onlyStock" [(ngModel)]="onlyStock" (change)="onSearchTextChanged()"/> 

@@ -1,6 +1,15 @@
-.prodTable{
-        border: 2px solid black;
-        border-collapse: collapse;
-        padding: auto;
-        text-align: center;
+.prodTableTitle{
+        padding-left: 100px; 
+        font-weight: bold;
+}
+
+.prodTableHeader {
+        padding-left: 10px; 
+        font-weight: bold;
+}
+
+fieldset {
+        width:300px;
+        border-color: green; 
+        margin:5px;
 }
