@@ -16,7 +16,7 @@ export class ProductFilter {
         this.productJson = (productData as any).default;
         if (srchTx && srchTx.trim()) {
             for (let i = 0; i < this.productJson.length; i++) {
-                if (this.productJson[i].name.includes(srchTx))
+                 if (this.productJson[i].name.toUpperCase().includes(srchTx.toUpperCase()))
                     if ((onlyStocked && this.productJson[i].stocked == true) || !onlyStocked)
                         result.push(this.productJson[i]);
             }
