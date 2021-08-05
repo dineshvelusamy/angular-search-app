@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'search-app',
@@ -9,7 +9,16 @@ export class AppComponent {
   title = 'search-app';
   resultData : any;
 
-  passOnResults(prodData:any) {
-    this.resultData = prodData;
+  searchCriteria: any;
+
+  constructor() {  }
+
+  // passOnResults(prodData:any) {
+  //   this.resultData = prodData;
+  // }
+
+  onFilterProducts(criteria:any) {
+    console.log(criteria.onlyStock);
+    this.searchCriteria = criteria;
   }
 }

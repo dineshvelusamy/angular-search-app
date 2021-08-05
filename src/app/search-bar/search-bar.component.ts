@@ -16,13 +16,14 @@ export class SearchBarComponent implements OnInit {
   productJsonObj: any;
 
   @Output()
-  dataChanged = new EventEmitter<string>();
+  dataChanged = new EventEmitter<any>();
 
   constructor(@Inject("prodSvc") prodSvc: any) {
     this.searchTxt = "";
     this.onlyStock = false;
     this.productSvc = prodSvc;
     this.productJsonObj = {};
+    this.onSearchTextChanged();
   }
 
   ngOnInit(): void {
@@ -31,14 +32,17 @@ export class SearchBarComponent implements OnInit {
   onSearchTextChanged() {
     // console.log(this.searchTxt+"  "+this.onlyStock);
     this.productJsonObj = this.productSvc.setSearchText(this.searchTxt, this.onlyStock);
-    console.log(this.productJsonObj);
-    this.dataChanged.emit(this.productJsonObj);
+    // console.log(this.productJsonObj);
+    var criteria: any = new Object();
+    criteria.searchText = this.searchTxt;
+    criteria.onlyStock = this.onlyStock;
+    this.dataChanged.emit(criteria);
   }
 
-  onStockOnlyChange() {
-    console.log(this.searchTxt + "  " + this.onlyStock);
-    this.productJsonObj = this.productSvc.setSearchText(this.searchTxt, this.onlyStock);
-    console.log(this.productJsonObj);
-    this.dataChanged.emit(this.productJsonObj);
-  }
+  // onStockOnlyChange() {
+  //   console.log(this.searchTxt + "  " + this.onlyStock);
+  //   this.productJsonObj = this.productSvc.setSearchText(this.searchTxt, this.onlyStock);
+  //   console.log(this.productJsonObj);
+  //   this.dataChanged.emit(this.productJsonObj);
+  // }
 }

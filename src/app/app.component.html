@@ -1,2 +1,4 @@
-<search-bar-comp (dataChanged)="passOnResults($event)"></search-bar-comp>
-<product-table-comp [productJsonObj]="resultData"></product-table-comp>
+<fieldset style="width:200px; border-color: orange;">
+    <search-bar-comp (dataChanged)="onFilterProducts($event)"></search-bar-comp>
+    <product-table-comp [searchCriteria]="searchCriteria"></product-table-comp>
+</fieldset>

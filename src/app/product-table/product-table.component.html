@@ -1,7 +1,10 @@
-<fieldset style="width:300px">
+<fieldset style="width:300px;border-color: green; margin:5px;">
     <div>
-        <h3> Product table </h3>
-        <table class="prodTable" style="width: 300px;">
+        <div style="padding-left: 100px; font-weight: bold;"> Product table </div>
+        <div style="padding-left: 10px; font-weight: bold;">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Price</div>
+        <ng-template #prodcontainer></ng-template>
+
+        <!-- <table class="prodTable" style="width: 300px;">
             <thead>
                 <td class="prodTable">
                     Category
@@ -17,13 +20,28 @@
                 </td>
             </thead>
             <tbody>
-                <tr  *ngFor="let item of productJsonObj">
+                <tr *ngFor="let item of productJsonObj">
                     <td class="prodTable">{{item.category}}</td>
                     <td class="prodTable">{{item.name}}</td>
                     <td class="prodTable">{{item.stocked}}</td>
-                    <td class="prodTable">{{item.name}}</td>
+                    <td class="prodTable">{{item.price}}</td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
+        <!-- <table>
+            <tbody>
+                <tr *ngFor="let item of productJsonObj">
+                    <td>{{item.category}}</td>
+                    <td>
+                        <table>
+                            <tr *ngFor="let prod of item.category">
+                                <td>{{prod.name}}  {{prod.price}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
     </div>
+    <!-- <ng-template product-viewer></ng-template> -->
 </fieldset>
