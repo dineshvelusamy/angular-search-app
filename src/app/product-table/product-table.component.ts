@@ -11,8 +11,6 @@ export class ProductTableComponent implements OnInit, AfterViewInit, OnChanges, 
 
   productSvc: any;
   componentList: any;
-
-  @Input()
   productJsonObj: any;
 
   @Input()
